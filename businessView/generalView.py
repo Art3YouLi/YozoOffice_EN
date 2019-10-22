@@ -200,8 +200,12 @@ class GeneralView(Common):
         return self.get_element_result('//android.widget.TextView[@text="%s"]' % key)
 
     def jump_to_index(self, type='last'):  # 5个主页界面
+        """
+        index = ['last', 'alldoc', 'cloud', 'star', 'my']  # office的五个页面组件尾缀
+        :param type:
+        :return:
+        """
         logging.info('===========jump_to_%s==========' % type)
-        # index = ['last', 'alldoc', 'cloud', 'star', 'my']  # office的五个页面组件尾缀
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/ll_bottommenu_%s' % type).click()
 
     def pop_menu_click(self, option):  # 点击pop
