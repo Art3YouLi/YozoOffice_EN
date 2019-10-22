@@ -1,0 +1,15 @@
+desc: HW Mate 9
+port: 4723
+bp: 4724
+ip: 127.0.0.1
+desired_caps:
+  deviceName: HW Mate 9
+  udid: GWY0217223001955
+  platformVersion: 7.1.2
+  platformName: Android
+  automationName: uiautomator2
+  systemPort: 8200
+  appPackage: com.yozo.office.en
+  noReset:  !!bool True
+  appActivity: com.yozo.home.WelcomeActivity #真机需要从最开始的activity进入
+  newCommandTimeout: 120
