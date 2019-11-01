@@ -102,6 +102,7 @@ class GeneralView(Common):
         self.driver.find_element(By.XPATH, '//*[@text="Copy"]').click()
         time.sleep(1)
         self.driver.find_elements(By.ID, 'com.yozo.office.en:id/file_item')[0].click()
+        time.sleep(0.5)
         self.driver.find_elements(By.ID, 'com.yozo.office.en:id/file_item')[1].click()
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/btn_move_true').click()
         return self.get_toast_message('Operation success')
@@ -123,9 +124,7 @@ class GeneralView(Common):
 
     def check_mark_satr(self, file):
         logging.info('=========check_mark_satr==========')
-        # ele = '//*[@text="%s"]/following-sibling::android.widget.ImageView' % file
         ele = '//*[@text="%s"]/../android.widget.ImageView' % file
-        # ele = '//*[@text="%s"]/parent::android.widget.LinearLayout/android.widget.ImageView' % file
         return self.get_element_result(ele)
 
     def mark_star(self):
@@ -142,7 +141,7 @@ class GeneralView(Common):
         ele = self.driver.find_element(By.CLASS_NAME, 'android.support.v7.widget.RecyclerView')
         eles = ele.find_elements(By.ID, 'com.yozo.office.en:id/file_item')
         if index < 1:
-            eles[0].find_element(By.ID, 'com.yozo.office.en:id/lay_more').click()
+            eles[index].find_element(By.ID, 'com.yozo.office.en:id/lay_more').click()
         elif index > len(eles):
             eles[-1].find_element(By.ID, 'com.yozo.office.en:id/lay_more').click()
         else:
@@ -173,8 +172,8 @@ class GeneralView(Common):
 
     def check_open_folder(self, folder):
         logging.info('==========check_open_folder==========')
-        folder_dict = {'手机': '浏览目录 > 手机', '我的文档': ' > Documents', 'Download': ' > Download',
-                       'QQ': ' > QQfile_recv', '微信': ' > Download'}
+        folder_dict = {'Mobile Phones': 'Browse Category', 'My Documents': ' > Documents', 'Download': ' > Download',
+                       'QQ': ' > QQfile_recv', 'Wechat': ' > Download'}
         path = self.driver.find_elements(By.XPATH, '//*[@resource-id="com.yozo.office.en:id/name_layout"]'
                                                    '/android.widget.TextView')[-1].text
         if path == folder_dict[folder]:
