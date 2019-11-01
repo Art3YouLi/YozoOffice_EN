@@ -73,6 +73,20 @@ class Common(BaseView):
         y_ele2 = ele2.location['y']
         self.driver.swipe(x_ele1, y_ele1, x_ele1, y_ele2, 3000)
 
+    def swipe_to_end(self):
+        """
+        滑动支列表末端
+        :return:None
+        """
+        flag = False
+        while not flag:
+            l = self.driver.find_elements(By.ID, 'com.yozo.office.en:id/tv_title')
+            self.swipe_ele1(l[-1], l[0])
+            last_ele = l[-1].get_attribute('text')
+            new_last = self.driver.find_elements(By.ID, 'com.yozo.office.en:id/tv_title')[-1].get_attribute('text')
+            if last_ele == new_last:
+                flag = True
+
     def drag_element(self, ele1, ele2):  # 拖动
         logging.info('drag')
         action = TouchAction(self.driver)
