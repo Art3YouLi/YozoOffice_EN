@@ -87,7 +87,7 @@ class TestPg(StartEnd):
 
         logging.info('==========validate toast==========')
         try:
-            toast = self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_dialog_pgplay_tiptext_id')
+            toast = self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_dialog_pgplay_tiptext_id')
         except NoSuchElementException:
             self.assertTrue(False, '未出现弹窗')
         else:
@@ -119,7 +119,7 @@ class TestPg(StartEnd):
 
         logging.info('==========validate toast==========')
         try:
-            toast = self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_dialog_pgplay_tiptext_id')
+            toast = self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_dialog_pgplay_tiptext_id')
         except NoSuchElementException:
             self.assertTrue(False, '未出现弹窗')
         else:
@@ -183,11 +183,11 @@ class TestPg(StartEnd):
         logging.info('==========validate toast==========')
         try:
             WebDriverWait(self.driver, 120).until(
-                ec.visibility_of_element_located((By.ID, 'com.yozo.office:id/yozo_ui_dialog_pgplay_tiptext_id')))
+                ec.visibility_of_element_located((By.ID, 'com.yozo.office.en:id/yozo_ui_dialog_pgplay_tiptext_id')))
         except TimeoutException:
             self.assertTrue(False, '等待自动播放两分钟，未找到弹窗')
         else:
-            toast = self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_dialog_pgplay_tiptext_id')
+            toast = self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_dialog_pgplay_tiptext_id')
             self.assertEqual(toast.text, '已是简报尾页', '验证弹窗信息为已是简报尾页')
 
     @unittest.skip('skip test_ppt_play_switch')

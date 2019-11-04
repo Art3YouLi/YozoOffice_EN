@@ -55,7 +55,7 @@ class TestSs:
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
         for i in range(5):
             self.driver.press_keycode(45)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         gv = GeneralView(self.driver)
         gv.group_button_click('编辑')
@@ -80,7 +80,7 @@ class TestSs:
         self.driver.press_keycode(45)
         self.driver.press_keycode(45)
         self.driver.press_keycode(45)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         ss.group_button_click('编辑')
         time.sleep(1)
@@ -116,7 +116,7 @@ class TestSs:
         self.driver.press_keycode(7)
         self.driver.press_keycode(7)
         self.driver.press_keycode(7)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         ss = SSView(self.driver)
         ss.group_button_click('编辑')
@@ -137,7 +137,7 @@ class TestSs:
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
         for i in range(20):
             self.driver.press_keycode(45)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         cv.drag_coordinate(110 + 263 * 2, 295 + 55 * 2, 110 + 263 * 3, 295 + 55 * 2)
 
         ss = SSView(self.driver)
@@ -166,7 +166,7 @@ class TestSs:
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
         for i in range(20):
             self.driver.press_keycode(45)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         ss = SSView(self.driver)
         ss.group_button_click('编辑')
         gv = GeneralView(self.driver)
@@ -242,60 +242,60 @@ class TestSs:
         cv.tap(110 + 263 * 2.5, 295 + 55 * 0.5)
         ss.formula_all('最近使用', 'MAX')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 1.5)
         ss.formula_all('数学和三角', 'ABS')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 2.5)
         ss.formula_all('财务', 'DOLLARDE')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
         time.sleep(0.5)
         cv.tap(110 + 263 * 1.5, 295 + 55 * 5.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 3.5)
         ss.formula_all('逻辑', 'AND')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
         time.sleep(0.5)
         cv.tap(110 + 263 * 1.5, 295 + 55 * 5.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 4.5)
         ss.formula_all('文本', 'ASC')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 5.5)
         ss.formula_all('日期和时间', 'NOW')
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 6.5)
         ss.formula_all('查找与引用', 'COLUMN')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 7.5)
         ss.formula_all('统计', 'AVERAGE')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         # cv.tap(110 + 263 * 2.5, 295 + 55 * 8.5)
         # ss.formula_all('工程', 'DEC2BIN')
         # cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        # self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        # self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 9.5)
         ss.formula_all('信息', 'ISBLANK')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         cv.tap(110 + 263 * 2.5, 295 + 55 * 10.5)
         ss.formula_all('所有公式', 'ABS')
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
     @unittest.skip('skip test_formula')
     @data(*auto_sum)
@@ -316,7 +316,7 @@ class TestSs:
         ss.auto_sum(formula)
         ss.tap(x + width * 0.5, y - height * 6.5)
         ss.drag_coordinate(x + width, y - height * 6, x + width, y - height * 2)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
     @unittest.skip('skip test_pop_cell_row_col1')
     def test_pop_cell_row_col1(self):  # 单元格、行、列相关操作
@@ -333,7 +333,7 @@ class TestSs:
         ss.cell_edit()  # 进入编辑
         for i in range(8):
             self.driver.press_keycode(random.randint(29, 54))
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         time.sleep(0.5)
         cv.tap(x + width * 0.5, y - height * 5.5)  # 复制粘贴
         gv.pop_menu_click('copy')
@@ -368,7 +368,7 @@ class TestSs:
         ss.cell_edit()  # 进入编辑
         for i in range(8):
             self.driver.press_keycode(random.randint(29, 54))
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         time.sleep(0.5)
 
         x1, y1, x2, y2 = ss.row_col_loc()
@@ -414,7 +414,7 @@ class TestSs:
         ss.cell_edit()  # 进入编辑
         for i in range(8):
             self.driver.press_keycode(random.randint(29, 54))
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         time.sleep(0.5)
 
         x1, y1, x2, y2 = ss.row_col_loc()
@@ -475,7 +475,7 @@ class TestSs:
         gv.tap(x + width * 0.5, y - height * 5.5)
         gv.pop_menu_click('newline')
 
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         gv.tap(x + width * 0.5, y - height * 5.5)
         gv.pop_menu_click('fill_data')
         x1, y1 = gv.find_pic_position('fill_down')
@@ -498,7 +498,7 @@ class TestSs:
         cv.tap(110 + 263 * 1.5, 295 + 55 * 1.5)
         for i in range(20):
             self.driver.press_keycode(45)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         ss = SSView(self.driver)
         ss.group_button_click('编辑')
         gv = GeneralView(self.driver)
@@ -571,10 +571,10 @@ class TestSs:
         ss.show_sheet()
         ss.add_sheet()
         ss.add_sheet()
-        ele1 = ss.get_element('//*[@resource-id="com.yozo.office:id/ll_ss_sheet_item"and @index="0"]')
-        ele2 = ss.get_element('//*[@resource-id="com.yozo.office:id/ll_ss_sheet_item"and @index="2"]')
-        # ele1 = ss.find_element(By.XPATH, '//*[@resource-id="com.yozo.office:id/ll_ss_sheet_item"and @index="0"]')
-        # ele2 = ss.find_element(By.XPATH, '//*[@resource-id="com.yozo.office:id/ll_ss_sheet_item"and @index="2"]')
+        ele1 = ss.get_element('//*[@resource-id="com.yozo.office.en:id/ll_ss_sheet_item"and @index="0"]')
+        ele2 = ss.get_element('//*[@resource-id="com.yozo.office.en:id/ll_ss_sheet_item"and @index="2"]')
+        # ele1 = ss.find_element(By.XPATH, '//*[@resource-id="com.yozo.office.en:id/ll_ss_sheet_item"and @index="0"]')
+        # ele2 = ss.find_element(By.XPATH, '//*[@resource-id="com.yozo.office.en:id/ll_ss_sheet_item"and @index="2"]')
         ss.drag_element(ele1, ele2)
 
     @unittest.skip('skip test_ss_chart_pop')
@@ -598,7 +598,7 @@ class TestSs:
         time.sleep(2)
         ss.pop_menu_click('edit')
         self.driver.press_keycode(15)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
         # ss.tap(x, y)
         x, y = ss.find_pic_position('drag_point1')
         ss.swipe(x, y, x, y - height)

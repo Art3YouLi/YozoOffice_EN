@@ -32,7 +32,7 @@ class TestWp(StartEnd):
         wp = WPView(self.driver)
         wp.read_self_adaption()
         time.sleep(1)
-        self.assertFalse(wp.get_element_result('//*[@resource-id="com.yozo.office:id/yozo_ui_toolbar_button_close"]'),
+        self.assertFalse(wp.get_element_result('//*[@resource-id="com.yozo.office.en:id/yozo_ui_toolbar_button_close"]'),
                          'read self adaption set fail!')
 
     @unittest.skip('skip test_wp_pop_menu_text')
@@ -190,7 +190,7 @@ class TestWp(StartEnd):
         cv.create_file('wp')
         wp = WPView(self.driver)
         wp.group_button_click('插入')
-        wp.get_element('//*[@resource-id="com.yozo.office:id/yozo_ui_%s_option_id_insert_shape"]'
+        wp.get_element('//*[@resource-id="com.yozo.office.en:id/yozo_ui_%s_option_id_insert_shape"]'
                        '/android.widget.FrameLayout[1]' % type).click()
         time.sleep(1)
 
@@ -260,11 +260,11 @@ class TestWp(StartEnd):
         cv.create_file('wp')
         wp = WPView(self.driver)
         wp.group_button_click('插入')
-        wp.get_element('//*[@resource-id="com.yozo.office:id/yozo_ui_%s_option_id_insert_shape"]'
+        wp.get_element('//*[@resource-id="com.yozo.office.en:id/yozo_ui_%s_option_id_insert_shape"]'
                        '/android.widget.FrameLayout[3]' % type).click()
         wp = WPView(self.driver)
         for i in range(1, 5):
-            wp.get_element('//*[@resource-id="com.yozo.office:id/yozo_ui_%s_option_id_shape_quick_function"]'
+            wp.get_element('//*[@resource-id="com.yozo.office.en:id/yozo_ui_%s_option_id_shape_quick_function"]'
                            '/android.widget.FrameLayout[%s]' % (type1, i)).click()
             # print(i)
 
@@ -337,7 +337,7 @@ class TestWp(StartEnd):
         wp.group_button_click('插入')
         wp.insert_pic()
         wp = WPView(self.driver)
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
         for i in range(1, 5):
             wp.get_element(
                 '//*[@resource-id="%s"]'
@@ -356,10 +356,10 @@ class TestWp(StartEnd):
             while not wp.exist('//*[@text="文字环绕"]'):
                 wp.swipe(s[0], s[1], s[2], s[3])
             wp.text_wrap('四周型')
-            ele1 = '//*[@resource-id="com.yozo.office:id/yozo_ui_wp_option_id_picture_broad"]'
+            ele1 = '//*[@resource-id="com.yozo.office.en:id/yozo_ui_wp_option_id_picture_broad"]'
             ele2 = '//*[@text="叠放次序"]'
             wp.swipe_ele(ele1, ele2)
-        cc = "com.yozo.office:id/yozo_ui_wp_option_id_picture_edit"
+        cc = "com.yozo.office.en:id/yozo_ui_wp_option_id_picture_edit"
         wp.get_element(
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[5]' % cc).click()
@@ -376,27 +376,27 @@ class TestWp(StartEnd):
         self.insert_pic_rect(type1)
         wp = WPView(self.driver)
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_quick_function"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_quick_function"
         # else:
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
 
         wp.get_element(
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[5]' % cc).click()
         # 属性调整大小
         wp.shape_option_5()
-        if not wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if not wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_effect_type"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_effect_type"
         # else:
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_effect" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_effect" % type1
         for i in range(1, 7):
             wp.get_element(
                 '//*[@resource-id="%s"]'
                 '/android.widget.FrameLayout[%s]' % (cc, i)).click()
 
-        cc = 'com.yozo.office:id/yozo_ui_option_id_object_effect_shadow'
+        cc = 'com.yozo.office.en:id/yozo_ui_option_id_object_effect_shadow'
         for i in range(1, 6):
             wp.get_element(
                 '//*[@resource-id="%s"]'
@@ -408,23 +408,23 @@ class TestWp(StartEnd):
         self.insert_pic_rect(type1)
         wp = WPView(self.driver)
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_quick_function"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_quick_function"
         # else:
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
         wp.get_element(
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[5]' % cc).click()
         # 属性调整大小
         wp.shape_option_5()
-        if not wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if not wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
 
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_border_color"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_border_color"
         # elif type1 == 'wp':
-        cc = "com.yozo.office:id/yozo_ui_wp_option_id_picture_broad"
+        cc = "com.yozo.office.en:id/yozo_ui_wp_option_id_picture_broad"
         # elif type1 == 'ss':
-        #     cc = "com.yozo.office:id/yozo_ui_ss_option_id_picture_broad_color"
+        #     cc = "com.yozo.office.en:id/yozo_ui_ss_option_id_picture_broad_color"
         s = wp.swipe_option('up')
         while not wp.exist('//*[@resource-id="%s"]' % cc):
             wp.swipe(s[0], s[1], s[2], s[3])
@@ -432,7 +432,7 @@ class TestWp(StartEnd):
             wp.get_element(
                 '//*[@resource-id="%s"]'
                 '/android.widget.FrameLayout[%s]' % (cc, i)).click()
-        cc = 'com.yozo.office:id/yozo_ui_option_id_color_all'
+        cc = 'com.yozo.office.en:id/yozo_ui_option_id_color_all'
         list(map(lambda i: wp.get_element(
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[%s]' % (cc, i)).click(), range(1, 43)))
@@ -446,23 +446,23 @@ class TestWp(StartEnd):
         self.insert_pic_rect(type1)
         wp = WPView(self.driver)
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_quick_function"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_quick_function"
         # else:
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
         wp.get_element(
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[5]' % cc).click()
         # 属性调整大小
         wp.shape_option_5()
-        if not wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if not wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
 
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_border_type"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_border_type"
         # elif type1 == 'wp':
-        cc = "com.yozo.office:id/yozo_ui_wp_option_id_picture_border_type"
+        cc = "com.yozo.office.en:id/yozo_ui_wp_option_id_picture_border_type"
         # elif type1 == 'ss':
-        #     cc = "com.yozo.office:id/yozo_ui_ss_option_id_picture_border_type"
+        #     cc = "com.yozo.office.en:id/yozo_ui_ss_option_id_picture_border_type"
         s = wp.swipe_option('up')
         while not wp.exist('//*[@resource-id="%s"]' % cc):
             wp.swipe(s[0], s[1], s[2], s[3])
@@ -470,7 +470,7 @@ class TestWp(StartEnd):
             wp.get_element(
                 '//*[@resource-id="%s"]'
                 '/android.widget.FrameLayout[%s]' % (cc, i)).click()
-        cc = 'com.yozo.office:id/yozo_ui_shape_border_type'
+        cc = 'com.yozo.office.en:id/yozo_ui_shape_border_type'
         for i in range(1, 8):
             wp.get_element(
                 '//*[@resource-id="%s"]'
@@ -481,23 +481,23 @@ class TestWp(StartEnd):
         self.insert_pic_rect(type1)
         wp = WPView(self.driver)
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_quick_function"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_quick_function"
         # else:
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
         wp.get_element(
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[5]' % cc).click()
         # 属性调整大小
         wp.shape_option_5()
-        if not wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if not wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
 
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_border_width"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_border_width"
         # elif type1 == 'wp':
-        cc = "com.yozo.office:id/yozo_ui_wp_option_id_picture_border_width"
+        cc = "com.yozo.office.en:id/yozo_ui_wp_option_id_picture_border_width"
         # elif type1 == 'ss':
-        #     cc = "com.yozo.office:id/yozo_ui_ss_option_id_picture_border_width"
+        #     cc = "com.yozo.office.en:id/yozo_ui_ss_option_id_picture_border_width"
         s = wp.swipe_option('up')
         while not wp.exist('//*[@resource-id="%s"]' % cc):
             wp.swipe(s[0], s[1], s[2], s[3])
@@ -505,10 +505,10 @@ class TestWp(StartEnd):
             wp.get_element(
                 '//*[@resource-id="%s"]'
                 '/android.widget.FrameLayout[%s]' % (cc, i)).click()
-        # cc = 'com.yozo.office:id/yozo_ui_option_id_objec_border_width_select'
+        # cc = 'com.yozo.office.en:id/yozo_ui_option_id_objec_border_width_select'
         for i in range(30):
             wp.get_element(
-                '//*[@resource-id="com.yozo.office:id/yozo_ui_number_picker_arrow_right"]').click()
+                '//*[@resource-id="com.yozo.office.en:id/yozo_ui_number_picker_arrow_right"]').click()
 
     def test_wp_pic_text_round(self):
         # 仅wp存在文字环绕功能
@@ -534,9 +534,9 @@ class TestWp(StartEnd):
             wp.text_wrap('四周型')
 
         # if type1 == 'pg':
-        #     cc = "com.yozo.office:id/yozo_ui_pg_option_id_picture_quick_function"
+        #     cc = "com.yozo.office.en:id/yozo_ui_pg_option_id_picture_quick_function"
         # else:
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
         if type1 == 'wp':
             s = wp.swipe_option('down')
             while not wp.exist('//*[@resource-id="%s"]' % cc):
@@ -546,7 +546,7 @@ class TestWp(StartEnd):
             '/android.widget.FrameLayout[5]' % cc).click()
         # 属性调整大小
         wp.shape_option_5()
-        if wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
         # if type1 == 'pg':
         #     pic_png = 'rotate_free.png'
@@ -558,7 +558,7 @@ class TestWp(StartEnd):
         touch(self.template_object('paste.png'))
         touch(self.template_object(pic_png))
         touch(self.template_object('paste.png'))
-        if not wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if not wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
         ele1 = '//*[@text="图片"]'
         ele2 = '//*[@text="轮廓"]'
@@ -634,7 +634,7 @@ class TestWp(StartEnd):
         wp.text_wrap('四周型')
 
         # 属性调整大小
-        cc = "com.yozo.office:id/yozo_ui_%s_option_id_picture_edit" % type1
+        cc = "com.yozo.office.en:id/yozo_ui_%s_option_id_picture_edit" % type1
         s = wp.swipe_option('down')
         while not wp.exist('//*[@resource-id="%s"]' % cc):
             wp.swipe(s[0], s[1], s[2], s[3])
@@ -642,7 +642,7 @@ class TestWp(StartEnd):
             '//*[@resource-id="%s"]'
             '/android.widget.FrameLayout[5]' % cc).click()
         wp.shape_option_5()
-        if wp.exist('//*[@resource-id="com.yozo.office:id/yozo_ui_option_content_container"]'):
+        if wp.exist('//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'):
             wp.fold_expand()
 
         touch(self.template_object('chart_all1.png'))
