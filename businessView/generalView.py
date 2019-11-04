@@ -55,7 +55,7 @@ class GeneralView(Common):
         time.sleep(2)
         return self.get_toast_message('文件下载成功')
 
-    def select_all(self, select='all', del_list=[]):  # 全选、多选
+    def select_all(self, select='all'):  # 全选、多选
         logging.info('=========select_all==========')
         self.driver.find_element(By.XPATH, '//*[@text="Select All"]').click()
         name_list = []
@@ -64,10 +64,12 @@ class GeneralView(Common):
         else:
             eles = self.driver.find_elements(By.XPATH, '//android.support.v7.widget.RecyclerView'
                                                        '/android.widget.RelativeLayout')
-            for i in del_list:
-                name = eles[i - 1].find_element(By.ID, 'com.yozo.office.en:id/tv_title').text
+            i = random.randint(0, len(eles))
+            while i < len(eles):
+                name = eles[i].find_element(By.ID, 'com.yozo.office.en:id/tv_title').text
                 name_list.append(name)
-                eles[i - 1].click()
+                eles[i].click()
+                i += 1
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/ll_check_bottom_del').click()
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/btn_true').click()
         return name_list
