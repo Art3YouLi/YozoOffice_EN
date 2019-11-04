@@ -26,7 +26,7 @@ class TestCommon(StartEnd):
         cv = CreateView(self.driver)
         gv = GeneralView(self.driver)
         cv.create_file(type)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_toolbar_button_undo')  # 判断页面是否已切过来
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_toolbar_button_undo')  # 判断页面是否已切过来
 
         gv.group_button_click('插入')
         gv.insert_shape(type, 1)
@@ -71,16 +71,16 @@ class TestCommon(StartEnd):
     @data(*WPS)
     def test_create_file(self, type):  # 新建文档
         logging.info('==========test_create_file==========')
-        self.driver.find_element(By.ID, 'com.yozo.office:id/fb_show_menu_main').click()
-        self.driver.find_element(By.ID, 'com.yozo.office:id/fb_show_menu_%s' % type).click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/fb_show_menu_main').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/fb_show_menu_%s' % type).click()
         create_dict = {'wp': ['新建空白.doc', '小清新个人简历.doc', '会议议程.doc', '蓝色应届生简历.doc', '项目合作协议书.doc', '房屋租赁合同.doc'],
                        'ss': ['新建空白.xls', '地域销售柱形图.xls', '会议议程.xls', '可视化自动分析.xls', '数据可视化.xls', '年度销售额统计.xls'],
                        'pg': ['新建空白.ppt', '秋分.ppt', '多彩商业创意计划书.ppt', '简约灰橙商务.ppt', '黑金简约商务风.ppt', '蓝色简约商务.ppt']}
         for i in range(6):
-            self.driver.find_elements(By.ID, 'com.yozo.office:id/iv_gv_image')[i].click()
-            file_name = self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_title_text_view').text
+            self.driver.find_elements(By.ID, 'com.yozo.office.en:id/iv_gv_image')[i].click()
+            file_name = self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_title_text_view').text
             self.assertTrue(file_name == create_dict[type][i])
-            self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_toolbar_button_close').click()
+            self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_toolbar_button_close').click()
 
     @unittest.skip('skip test_rotate')
     @data(*WPS)
@@ -228,7 +228,7 @@ class TestCommon(StartEnd):
         ov.open_random_file(SEARCH_DICT[file_type])
 
         gv = GeneralView(self.driver)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_toolbar_button_mode').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_toolbar_button_mode').click()
         gv.group_button_click('插入')
         gv.insert_shape(file_type, 1)
 
@@ -386,7 +386,7 @@ class TestCommon(StartEnd):
         if type == 'ss':
             ss = SSView(self.driver)
             x1, y1, w, h = ss.cell_location()
-            self.driver.find_element(By.ID, 'com.yozo.office:id/formulabar_ok').click()
+            self.driver.find_element(By.ID, 'com.yozo.office.en:id/formulabar_ok').click()
 
         gv.group_button_click('插入')
         gv.insert_shape(type)
@@ -616,7 +616,7 @@ class TestCommon(StartEnd):
         gv.chart_element(type, '大标题', 1, 1, 1)
         gv.chart_element_XY('x', 'x', 0, 1, 1, 1, 1, 1)
         gv.chart_element_XY('y', 'y', 0, 1, 1, 0, 1, 0)
-        self.driver.find_element(By.ID, 'com.yozo.office:id/yozo_ui_option_back_button').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_option_back_button').click()
         gv.change_row_column()
         time.sleep(3)
 
