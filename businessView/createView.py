@@ -25,14 +25,14 @@ class CreateView(Common):
         logging.info('choose Template %s' % subtype)
         self.driver.find_elements(By.ID, 'com.yozo.office.en:id/iv_gv_image')[subtype - 1].click()
 
-    def save_as_file(self, file_name, save_path, item=1):  # 另存为
+    def save_as_file(self, file_name, save_path,  file_path='None', item=1):  # 另存为
         logging.info('==========save_as_file==========')
         if not self.get_element_result('//*[@text="另存为"]'):
             self.group_button_click('文件')
         self.driver.find_element(By.XPATH, '//*[@text="另存为"]').click()
         if self.get_element_result('//*[@text="保存路径"]'):
             self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_folder').click()
-        self.save_step(save_path, file_name, item)
+        self.save_step(file_name, save_path, file_path, item)
 
     def save_file(self):  # 点击保存图标或者保存选项，随机
         logging.info('==========save_file==========')
@@ -43,21 +43,29 @@ class CreateView(Common):
                 self.group_button_click(' File ')
             self.driver.find_element(By.XPATH, '//*[@text=" Save "]').click()
 
-    def save_new_file(self, file_name, save_path, item=1):  # 文件名，本地还是云端save_path=['local','cloud']，文件类型item=[1,2]
+    def save_new_file(self, file_name, save_path, file_path='None', item=1):  # 文件名，本地还是云端save_path=['local','cloud']，文件类型item=[1,2]
         logging.info('==========save_exist_file==========')
         self.save_file()
-        self.save_step(save_path, file_name, item)
+        self.save_step(file_name, save_path, file_path, item)
 
-    def save_step(self, save_path, file_name, item):
+    def save_step(self, file_name, save_path, file_path, item):
         logging.info('==========save_step==========')
         logging.info('choose save path %s' % save_path)
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_%s' % save_path).click()
 
-        logging.info('whether need login')
-        if self.get_toast_message('您尚未登录，请登录'):
-            l = LoginView(self.driver)
-            l.login_action('13915575564', 'zhang199412')
-            self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_%s' % save_path).click()
+        if file_path != 'None':
+            l = file_path.split('>')
+            for i in l:
+                while not self.get_element_result('//*[@text="%s"]' % i):
+                    eles = self.driver.find_elements(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_title')
+                    last_file = eles[-1].get_attribute('text')
+                    self.swipe_ele1(eles[-1], eles[0])
+                    new_eles = self.driver.find_elements(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_title')
+                    if new_eles[-1].get_attribute('text') == last_file:
+                        logging.error('There is no such file named %s' % i)
+                        break
+                else:
+                    self.get_element('//*[@text="%s"]' % i).click()
 
         logging.info('file named %s' % file_name)
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_file_name').set_text(file_name)
