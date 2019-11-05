@@ -1273,7 +1273,7 @@ class TestHomePage(StartEnd):
         gv.jump_to_index('star')
         self.assertTrue(gv.get_element_result('//*[@resource-id="com.yozo.office.en:id/iv_view"]'))
 
-    @unittest.skip('skip test_star_copy_file')
+    # @unittest.skip('skip test_star_copy_file')
     def test_star_copy_file(self):  # “打开”复制文件
         logging.info('==========test_star_copy_file==========')
         gv = GeneralView(self.driver)
@@ -1281,31 +1281,32 @@ class TestHomePage(StartEnd):
         gv.select_file_type('all')
         gv.file_more_info(1)
         gv.mark_star()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/im_title_bar_menu_user').click()
         gv.jump_to_index('star')
         gv.file_more_info(1)
         check = gv.copy_file()
         self.assertTrue(check, 'copy fail')
 
-    @unittest.skip('skip test_star_delete_file')
+    # @unittest.skip('skip test_star_delete_file')
     def test_star_delete_file(self):
         logging.info('==========test_star_delete_file==========')
         gv = GeneralView(self.driver)
         gv.jump_to_index('alldoc')
         gv.select_file_type('all')
         gv.sort_files('name', 'up')
-        gv.file_more_info(1)
+        gv.file_more_info(2)
         file = gv.mark_star()
         self.assertTrue(gv.check_mark_satr(file))
         self.driver.keyevent(4)
         gv.jump_to_index('star')
-        gv.file_more_info(1)
+        gv.file_more_info(2)
         suffix = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_filetype').text.strip()
         filename = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_filename').text.strip()
         name = filename + '.' + suffix
         gv.delete_file()
         self.assertFalse(gv.get_element_result('//*[@text="%s"]' % name), 'delete fail')
 
-    @unittest.skip('skip test_star_file_info')
+    # @unittest.skip('skip test_star_file_info')
     def test_star_file_info(self):  # File Info显示
         logging.info('==========test_star_file_info==========')
         gv = GeneralView(self.driver)
@@ -1330,13 +1331,13 @@ class TestHomePage(StartEnd):
         file = gv.mark_star()
         self.assertFalse(gv.check_mark_satr(file))
 
-    @unittest.skip('skip test_star_move_file')
+    # @unittest.skip('skip test_star_move_file')
     def test_star_move_file(self):  # “打开”移动文件
         logging.info('==========test_star_move_file==========')
         gv = GeneralView(self.driver)
         gv.jump_to_index('alldoc')
         gv.select_file_type('all')
-        gv.file_more_info(1)
+        gv.file_more_info(3)
         file = gv.mark_star()
         self.assertTrue(gv.check_mark_satr(file))
         self.driver.keyevent(4)
@@ -1345,7 +1346,7 @@ class TestHomePage(StartEnd):
         check = gv.move_file()
         self.assertTrue(check, 'move fail')
 
-    @unittest.skip('skip test_star_rename_file')
+    # @unittest.skip('skip test_star_rename_file')
     def test_star_rename_file(self):
         logging.info('==========test_star_rename_file==========')
         gv = GeneralView(self.driver)
@@ -1361,24 +1362,28 @@ class TestHomePage(StartEnd):
         check = gv.rename_file(newName)
         self.assertTrue(check, 'rename fail')
 
-    @unittest.skip('skip test_star_search_file')
+    # @unittest.skip('skip test_star_search_file')
     def test_star_search_file(self):  # 搜索功能
         logging.info('==========test_star_search_file==========')
         gv = GeneralView(self.driver)
         gv.jump_to_index('star')
-        search_file = '欢迎使用永中Office.pptx'
-        result = gv.search_action(search_file)
+        file_name = self.create_new_file()
+        result = gv.search_action(file_name)
         self.assertTrue(result)
 
-    @unittest.skip('skip test_star_select_all')
+    # @unittest.skip('skip test_star_select_all')
     def test_star_select_all(self):  # “最近”全选操作
         logging.info('==========test_star_select_all==========')
         gv = GeneralView(self.driver)
         gv.jump_to_index('alldoc')
         gv.select_file_type('all')
-        gv.file_more_info(1)
-        file = gv.mark_star()
-        self.assertTrue(gv.check_mark_satr(file))
+        eles = self.driver.find_elements(By.ID, 'com.yozo.office.en:id/file_item')
+        i = 1
+        while i <= len(eles):
+            gv.file_more_info(i)
+            file = gv.mark_star()
+            self.assertTrue(gv.check_mark_satr(file))
+            i += 1
         self.driver.keyevent(4)
         gv.jump_to_index('star')
         gv.file_more_info(1)
@@ -1390,16 +1395,11 @@ class TestHomePage(StartEnd):
         self.driver.find_element(By.XPATH, '//*[@text="Cancel"]').click()
         self.assertTrue(gv.get_element_result('//*[@resource-id="com.yozo.office.en:id/lay_more"]'))
 
-    @unittest.skip('skip test_star_select_all1')
+    # @unittest.skip('skip test_star_select_all1')
     def test_star_select_all1(self):
         logging.info('==========test_star_select_all1==========')
         gv = GeneralView(self.driver)
         gv.jump_to_index('alldoc')
-        gv.select_file_type('all')
-        gv.file_more_info(1)
-        file = gv.mark_star()
-        self.assertTrue(gv.check_mark_satr(file))
-        self.driver.keyevent(4)
         gv.jump_to_index('star')
         gv.file_more_info(1)
         name_list = gv.select_all('multi')
@@ -1407,7 +1407,7 @@ class TestHomePage(StartEnd):
             self.assertFalse(gv.search_action(i))
             self.driver.keyevent(4)
 
-    @unittest.skip('skip test_star_share')
+    # @unittest.skip('skip test_star_share')
     @data(*INDEX_SHARE_LIST)
     def test_star_share(self, way):
         logging.info('==========test_star_share==========')
@@ -1416,7 +1416,7 @@ class TestHomePage(StartEnd):
         gv.file_more_info(1)
         gv.share_file_index(way)
 
-    @unittest.skip('skip test_star_share_back')
+    # @unittest.skip('skip test_star_share_back')
     def test_star_share_back(self):  # “打开”中的分享的返回键
         logging.info('==========test_star_share_back==========')
         gv = GeneralView(self.driver)
@@ -1426,11 +1426,10 @@ class TestHomePage(StartEnd):
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/iv_back').click()
         self.assertTrue(gv.get_element_result('//*[@text="File Info"]'))
     
-    @unittest.skip('skip test_star_upload_file')
+    # @unittest.skip('skip test_star_upload_file')
     def test_star_upload_file(self):  # 上传文件
         logging.info('==========test_star_upload_file==========')
         gv = GeneralView(self.driver)
-        l = LoginView(self.driver)
         gv.jump_to_index('star')
         gv.file_more_info(1)
         check = gv.upload_file()
@@ -1446,16 +1445,15 @@ class TestHomePage(StartEnd):
         self.assertTrue(check, 'upload fail')
         self.driver.keyevent(4)
         gv.jump_to_index('my')
-        l.logout_action()
 
     logging.info('==========Me==========')
     
-    @unittest.skip('skip test_my1_about_yozo')
+    # @unittest.skip('skip test_my1_about_yozo')
     def test_me_about_yozo(self):
         logging.info('==========test_my1_about_yozo==========')
         gv = GeneralView(self.driver)
         gv.jump_to_index('my')
-        self.driver.find_element(By.XPATH, '//*[@text="关于YOZO"]').click()
+        self.driver.find_element(By.XPATH, '//*[@text="About Yozo"]').click()
         version_no = self.driver.find_element(By.ID, 'com.yozo.office.en:id/iv_version').text
         self.assertTrue(version_no != '-')
         web_addr = self.driver.find_element(By.ID, 'com.yozo.office.en:id/_phone_web').text
@@ -1465,18 +1463,16 @@ class TestHomePage(StartEnd):
         phone = self.driver.find_element(By.ID, 'com.yozo.office.en:id/_phone_phone').text
         self.assertTrue(phone == '400-050-5206')
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/iv_back').click()
-        self.assertTrue(gv.get_element_result('//*[@text="关于YOZO"]'))
+        self.assertTrue(gv.get_element_result('//*[@text="About Yozo"]'))
     
-    @unittest.skip('skip test_rotate_index')
+    # @unittest.skip('skip test_rotate_index')
     def test_rotate_index(self):
         logging.info('==========test_rotate_index==========')
         gv = GeneralView(self.driver)
+        gv.jump_to_index('last')
         gv.screen_rotate('landscape')
         gv.screen_rotate('portrait')
         gv.jump_to_index('alldoc')
-        gv.screen_rotate('landscape')
-        gv.screen_rotate('portrait')
-        gv.jump_to_index('cloud')
         gv.screen_rotate('landscape')
         gv.screen_rotate('portrait')
         gv.jump_to_index('star')
@@ -1486,10 +1482,11 @@ class TestHomePage(StartEnd):
         gv.screen_rotate('landscape')
         gv.screen_rotate('portrait')
     
-    @unittest.skip('skip test_search_icon_show')
+    # @unittest.skip('skip test_search_icon_show')
     def test_search_icon_show(self):  # 搜索键显示
         logging.info('==========test_search_icon_show==========')
         gv = GeneralView(self.driver)
+        gv.jump_to_index('last')
         ele = self.driver.find_element(By.ID, 'com.yozo.office.en:id/im_title_bar_menu_search')
         self.assertTrue(ele != None)
         gv.jump_to_index('alldoc')
