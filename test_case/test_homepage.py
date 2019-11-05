@@ -2,19 +2,16 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import random
 import time
-import unittest
 
 from ddt import ddt, data
 from selenium.webdriver.common.by import By
-
 from common.myunit import StartEnd
+from common.common_data import *
 from businessView.generalView import GeneralView
 from businessView.loginView import LoginView
 from businessView.openView import OpenView
 from businessView.createView import CreateView
-from common.common_data import *
 
 
 @ddt
