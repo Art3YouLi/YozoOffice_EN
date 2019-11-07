@@ -5,7 +5,6 @@ import random
 
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from businessView.loginView import LoginView
 from common.common_func import Common
 
 
