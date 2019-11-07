@@ -8,7 +8,6 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as ec
-from businessView.loginView import LoginView
 from common.common_func import Common
 from common.tool import get_project_path
 
@@ -219,11 +218,9 @@ class GeneralView(Common):
         logging.info('==========find_pic_position==========')
         self.getScreenShot4Compare('source')
         src_path = get_project_path() + '\\screenshots\\source.png'  # （当前页面）
-        obj_path = get_project_path() + '\\clickPicture_CN\\%s.png' % option  # （需要点击的地方）
-        # obj_path = get_project_path() + '\\clickPicture_EN\\%s.png' % option  # （需要点击的地方）
+        obj_path = get_project_path() + '\\clickPicture_EN\\%s.png' % option  # （需要点击的地方）
         x, y = self.find_image_cv(obj_path, src_path)
         return x, y
-        # self.tap(x,y)
 
     def change_row_column(self):  # 切换行列
         logging.info('==========change_row_column==========')
@@ -796,9 +793,9 @@ class GeneralView(Common):
         else:
             self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_%s_option_id_font_name' % type).click()
         time.sleep(1)
-        ele1 = '//*[@text="系统"]'
-        ele2 = '//*[@text="最近"]'
-        ele3 = '//*[@text="字体"]'
+        ele1 = '//*[@text="System"]'
+        ele2 = '//*[@text="Recent"]'
+        ele3 = '//*[@text=" Font "]'
         self.swipe_ele(ele2, ele3)
         self.swipe_ele(ele1, ele3)
         range = '//*[@resource-id="com.yozo.office.en:id/system_font_names"]/android.widget.RelativeLayout'
@@ -862,11 +859,6 @@ class GeneralView(Common):
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_folder').click()
         logging.info('choose save path %s' % save_path)
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_%s' % save_path).click()
-
-        if self.get_toast_message('您尚未登录，请登录'):
-            login = LoginView(self.driver)
-            login.login_action('13915575564', 'zhang199412')
-            self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_%s' % save_path).click()
 
         logging.info('file named %s' % file_name)
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_select_save_path_file_name').set_text(file_name)
@@ -951,12 +943,3 @@ class GeneralView(Common):
                 ec.visibility_of_element_located((By.CLASS_NAME, 'android.widget.ProgressBar')))
         except TimeoutException:
             logging.error('等待超时，抛出异常')
-
-
-if __name__ == '__main__':
-    list1 = ['dfs', 'ddfdf', 'gbg', 'ryy']
-    for e, i in enumerate(list1):
-        print(e, i)
-    # str = '123'
-    # str1 = str[:-1]
-    # print(str1)
