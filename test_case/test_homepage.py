@@ -9,7 +9,6 @@ from selenium.webdriver.common.by import By
 from common.myunit import StartEnd
 from common.common_data import *
 from businessView.generalView import GeneralView
-from businessView.loginView import LoginView
 from businessView.openView import OpenView
 from businessView.createView import CreateView
 
