@@ -39,13 +39,13 @@ class Common(BaseView):
         print(test)
         x = int(pos_start[0]) + int(template.shape[1] / 2)
         y = int(pos_start[1]) + int(template.shape[0] / 2)
-        # similarity = cv.minMaxLoc(result)[1]
-        # if similarity < 0.85:
-        #     return (-1, -1)
-        # else:
-        print("pass")
-        print(str(x) + ',' + str(y))
-        return x, y
+        similarity = cv.minMaxLoc(result)[1]
+        if similarity < 0.85:
+            return (-1, -1)
+        else:
+            # print("pass")
+            print(str(x) + ',' + str(y))
+            return x, y
 
     def swipe_search2(self, target, range):
         if not self.get_element_result(target):
