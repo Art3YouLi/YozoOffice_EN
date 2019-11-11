@@ -4,12 +4,12 @@ import logging
 import random
 import time
 import os
+import selenium.webdriver.support.expected_conditions as ec
 
 from ddt import ddt, data
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
-import selenium.webdriver.support.expected_conditions as ec
 from businessView.createView import CreateView
 from businessView.generalView import GeneralView
 from businessView.openView import OpenView
