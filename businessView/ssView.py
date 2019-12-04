@@ -159,7 +159,7 @@ class SSView(GeneralView):
         self.driver.find_element(By.XPATH,
                                  '//*[@resource-id="com.yozo.office.en:id/yozo_ui_ss_option_id_table_style"]/android.widget.FrameLayout[6]').click()
         eles = self.find_elements(By.XPATH, '//android.support.v7.widget.RecyclerView/android.widget.FrameLayout')
-        eleB = '//*[@text="表格样式"]'
+        eleB = '//*[@text=" Table Style "]'
         eleA = '//android.support.v7.widget.RecyclerView/android.widget.FrameLayout[20]'
         for e in eles:
             e.click()
@@ -230,7 +230,7 @@ class SSView(GeneralView):
                                          '//android.support.v7.widget.RecyclerView/android.widget.LinearLayout')
         for i in eles:
             i.click()
-        self.swipe_ele('//*[@text="时间"]', '//*[@text="常规"]')
+        self.swipe_ele('//*[@text=" Time "]', '//*[@text=" General "]')
         eles = self.driver.find_elements(By.XPATH,
                                          '//android.support.v7.widget.RecyclerView/android.widget.LinearLayout')
         for i in eles:
