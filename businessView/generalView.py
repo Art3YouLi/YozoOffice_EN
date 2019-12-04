@@ -361,7 +361,7 @@ class GeneralView(Common):
 
     def insert_chart_insert(self, chart, index=1):  # 插入图表,从插入选项进入
         logging.info('==========insert_chart_insert==========')
-        self.driver.find_element(By.XPATH, '//*[@text="图表"]').click()
+        self.driver.find_element(By.XPATH, '//*[@text=" Chart "]').click()
         self.insert_chart(chart, index)
 
     def insert_chart(self, chart, index):  # 插入图表,从图表选项进入
@@ -921,15 +921,15 @@ class GeneralView(Common):
         :return:
         """
         logging.info('==========file_info==========')
-        self.group_button_click('文件')
+        self.group_button_click(' File ')
         try:
-            self.driver.find_element(By.XPATH, '//*[@text="文档信息"]')
+            self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_ss_option_id_file_info')
         except NoSuchElementException:
-            ele_save = self.driver.find_element(By.XPATH, '//*[@text="保存"]')
-            ele_share = self.driver.find_element(By.XPATH, '//*[@text="分享"]')
+            ele_save = self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_ss_option_id_save')
+            ele_share = self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_ss_option_id_share')
             Common(self).swipe_ele1(ele_share, ele_save)
 
-        self.driver.find_element(By.XPATH, '//*[@text="文档信息"]').click()
+        self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_ss_option_id_file_info').click()
 
     def wait_loading(self, timeout=180):
         """
@@ -974,3 +974,22 @@ class GeneralView(Common):
         y3 = int((y1 + y2) / 2)
         list_xy = [x1 + 1, x3, x2 - 1, y1 + 1, y3, y2 - 1]
         return list_xy
+
+    def check_file_info(self):
+        """
+        查看文档信息
+        :return:
+        """
+        logging.info('==========check_file_info==========')
+        try:
+            file_name = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_filename').text
+            file_type = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_filetype').text
+            location = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_fileloc').text
+            file_size = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_filesize').text
+            edit_time = self.driver.find_element(By.ID, 'com.yozo.office.en:id/tv_filetime').text
+            if file_name != '-' and file_type != '-' and location != '-' and file_size != '-' and edit_time != '-':
+                return True
+            else:
+                return False
+        except NoSuchElementException:
+            return False
