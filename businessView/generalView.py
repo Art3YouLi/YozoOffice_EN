@@ -16,10 +16,12 @@ class GeneralView(Common):
 
     def insert_pic(self):  # 插入图片，基于vivoX9手机,选取图片只能点选坐标
         logging.info('=========insert_pic==========')
-        self.driver.find_element(By.XPATH, '//*[@text="图片"]').click()
-        self.driver.find_element(By.XPATH, '//android.widget.ListView/android.widget.RelativeLayout[1]').click()
+        self.driver.find_element(By.XPATH, '//*[@text=" Picture "]').click()
+        self.driver.find_element(By.XPATH, '//*[@resource-id="com.android.gallery3d:id/list_item_content"]').click()
         self.tap(145, 369)
-        self.driver.find_element(By.XPATH, '//*[@text="确定"]').click()
+        self.driver.find_element(By.XPATH, '//*[@resource-id="com.android.gallery3d:id/stub"]').click()
+        time.sleep(0.5)
+        self.driver.find_element(By.XPATH, '//*[@resource-id="com.android.gallery3d:id/head_select_right"]').click()
 
     def sort_files(self, way='type', order='down'):  # 排序
         logging.info('=========sort_files==========')
@@ -414,17 +416,15 @@ class GeneralView(Common):
             time.sleep(1)
             self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_option_back_button').click()
 
-    def text_wrap(self, wrap='浮于文字上方'):  # 文字环绕
+    def text_wrap(self, wrap=' In Front of Text '):  # 文字环绕
         logging.info('======text_wrap======')
-        wrap_list = ['浮于文字上方', '衬于文字下方', '嵌入型', '四周型', '紧密型']
-        self.driver.find_element(By.XPATH, '//*[@text="文字环绕"]').click()
+        self.driver.find_element(By.XPATH, '//*[@text=" Text Wrapping "]').click()
         self.driver.find_element(By.XPATH, '//*[@text="%s"]' % wrap).click()
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_option_back_button').click()
 
-    def shape_layer(self, lay='置于顶层'):  # 图形叠放次序
+    def shape_layer(self, lay=' Bring Forward '):  # 图形叠放次序
         logging.info('======shape_layer======')
-        lay_dict = {'上移一层': '1', '置于顶层': '2', '下移一层': '3', '置于底层': '4'}
-        self.driver.find_element(By.XPATH, '//*[@text="叠放次序"]').click()
+        self.driver.find_element(By.XPATH, '//*[@text=" Order "]').click()
         self.driver.find_element(By.XPATH, '//*[@text="%s"]' % lay).click()
         self.driver.find_element(By.ID, 'com.yozo.office.en:id/yozo_ui_option_back_button').click()
 
