@@ -326,3 +326,19 @@ class Common(BaseView):
             return x8, y8 - px
         elif x_y == 9:
             return x9 - px, y9 - px
+
+    def swipe_option(self, direction):
+        ele = '//*[@resource-id="com.yozo.office.en:id/yozo_ui_option_content_container"]'
+        s2 = self.get_element_xy(ele, x_y=2)
+        s5 = self.get_element_xy(ele)
+        if direction == 'up':
+            return s5[0], s5[1], s2[0], s2[1]
+        elif direction == 'down':
+            return s2[0], s2[1], s5[0], s5[1]
+        else:
+            s4 = self.get_element_xy(ele, x_y=4)
+            s6 = self.get_element_xy(ele, x_y=6)
+            if direction == 'left':
+                return s5[0], s5[1], s4[0], s4[1]
+            elif direction == 'right':
+                return s5[0], s5[1], s6[0], s6[1]
