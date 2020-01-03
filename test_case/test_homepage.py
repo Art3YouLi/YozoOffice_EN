@@ -1237,29 +1237,6 @@ class TestHomePage(StartEnd):
             for j in order_list:
                 gv.sort_files(i, j)
 
-    # @unittest.skip('skip test_wechat_upload_file')
-    def test_wechat_upload_file(self):  # 上传文件
-        logging.info('==========test_wechat_upload_file==========')
-        gv = GeneralView(self.driver)
-        l = LoginView(self.driver)
-        gv.jump_to_index('alldoc')
-        gv.open_local_folder("Wechat")
-        self.assertTrue(gv.check_open_folder("Wechat"), 'open fail')
-        gv.swipe_to_end()
-        gv.file_more_info(-1)
-        check = gv.upload_file()
-        if check is None:
-            gv.jump_to_index('alldoc')
-            gv.open_local_folder("Wechat")
-            self.assertTrue(gv.check_open_folder("Wechat"), 'open fail')
-            gv.swipe_to_end()
-            gv.file_more_info(-1)
-            check = gv.upload_file()
-        self.assertTrue(check, 'upload fail')
-        self.driver.keyevent(4)
-        gv.jump_to_index('my')
-        l.logout_action()
-
     logging.info('==========Favourite==========')
 
     # @unittest.skip('skip test_star_show_no_file')
