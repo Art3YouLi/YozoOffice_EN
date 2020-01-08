@@ -4,7 +4,7 @@ bp: 4724
 ip: 127.0.0.1
 desired_caps:
   deviceName: HW Mate 9
-  udid: GWY0217223001955
+  udid: GWY0217805003862
   platformVersion: 7.1.2
   platformName: Android
   automationName: uiautomator2
