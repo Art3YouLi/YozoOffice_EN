@@ -185,7 +185,6 @@ class Common(BaseView):
         logging.info('==========get_toast_message==========')
         message = '//*[@text="' + toast_message + '"]'
         try:
-            # WebDriverWait(self.driver, 10).until(lambda driver: driver.find_element(By.XPATH, message))
             self.driver.find_element(By.XPATH, message)
         except NoSuchElementException:
             logging.error('get toast message: %s fail!' % toast_message)
@@ -232,7 +231,6 @@ class Common(BaseView):
         self.swipe(x1, y2, x1, y1, 1000)
 
     def getTime(self, timestr):
-        # self.now = time.strftime("%Y-%m-%d %H_%M_%S")
         self.now = time.strftime(timestr)
         return self.now
 
