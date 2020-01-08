@@ -252,7 +252,7 @@ class TestWp(StartEnd):
         swipe([t[0], t[1]], [t[0], t[1] + 200])
         time.sleep(1)
 
-    @unittest.skip('skip test_wp_table_pop_menu')
+    # @unittest.skip('skip test_wp_table_pop_menu')
     def test_wp_table_pop_menu(self):
         self.wp_insert_one_table()
         wp = WPView(self.driver)
@@ -279,7 +279,7 @@ class TestWp(StartEnd):
         touch(wp.template_object('table_select.png'))
         touch(wp.template_object('cut.png'))
 
-    @unittest.skip('skip test_wp_table_size')
+    # @unittest.skip('skip test_wp_table_size')
     def test_wp_table_size(self):
         self.wp_insert_one_table()
         wp = WPView(self.driver)
@@ -292,11 +292,10 @@ class TestWp(StartEnd):
         swipe(wp.template_object('table_size.png'), wp.get_element_xy(ele, x_y=4))
         time.sleep(5)
 
-    @unittest.skip('skip test_wp_table_right_cols')
+    # @unittest.skip('skip test_wp_table_right_cols')
     def test_wp_table_right_cols(self):
         self.wp_insert_one_table()
         wp = WPView(self.driver)
-
         ele = '//*[@resource-id="com.yozo.office.en:id/yozo_ui_app_frame_office_view_container"]'
         e7 = wp.get_element_xy(ele, x_y=7)
         e9 = wp.get_element_xy(ele, x_y=9)
@@ -306,7 +305,7 @@ class TestWp(StartEnd):
         touch(wp.template_object('table_cols_rows.png'))
         time.sleep(5)
 
-    @unittest.skip('skip test_wp_table_left_rows')
+    # @unittest.skip('skip test_wp_table_left_rows')
     def test_wp_table_left_rows(self):
         self.wp_insert_one_table()
         wp = WPView(self.driver)
@@ -324,7 +323,7 @@ class TestWp(StartEnd):
         wp = WPView(self.driver)
         touch(wp.template_object('table_select.png', target_pos=9))
 
-    @unittest.skip('skip test_wp_table_merge_split')
+    # @unittest.skip('skip test_wp_table_merge_split')
     def test_wp_table_merge_split(self):
         logging.info('==========%s==========' % self.__str__().split(' ')[0])
         self.wp_insert_one_table()
@@ -410,7 +409,7 @@ class TestWp(StartEnd):
         for i in list_wrap:
             wp.text_wrap(i)
 
-    @unittest.skip('skip test_wp_shape_pop_menu_all')
+    # @unittest.skip('skip test_wp_shape_pop_menu_all')
     def test_wp_shape_pop_menu_all(self, type1='wp'):
         cv = CreateView(self.driver)
         cv.create_file(type1)
@@ -588,7 +587,7 @@ class TestWp(StartEnd):
             wp.get_element(
                 '//*[@resource-id="com.yozo.office.en:id/yozo_ui_number_picker_arrow_right"]').click()
 
-    @unittest.skip('skip test_wp_pic_order')
+    # @unittest.skip('skip test_wp_pic_order')
     def test_wp_pic_order(self, type1='wp'):
         # type1 = 'wp'
         self.insert_one_pic(type1)
@@ -643,7 +642,7 @@ class TestWp(StartEnd):
         wp.text_wrap(' Behind Text ')
         wp.text_wrap()
 
-    @unittest.skip('skip test_wp_pic_pop_menu_all')
+    # @unittest.skip('skip test_wp_pic_pop_menu_all')
     def test_wp_pic_pop_menu_all(self, type1='wp'):
         self.insert_one_pic(type1)
         wp = WPView(self.driver)
@@ -677,7 +676,7 @@ class TestWp(StartEnd):
         touch(wp.template_object('edit_pic.png'))  # 裁剪
         touch(wp.template_object('delete.png'))  # 删除
 
-    @unittest.skip('skip test_wp_pic_free_rotate')
+    # @unittest.skip('skip test_wp_pic_free_rotate')
     def test_wp_pic_free_rotate(self, type1='wp'):
         self.insert_one_pic(type1)
         wp = WPView(self.driver)
